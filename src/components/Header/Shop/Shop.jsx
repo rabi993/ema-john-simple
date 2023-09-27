@@ -10,7 +10,7 @@ const Shop = () => {
     const [cart, setCart] = useState([])
 
     useEffect( ()=>{
-        fetch('products.json')
+        fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
         .then(res => res.json())
         .then(data => setProducts(data))
 
@@ -38,7 +38,7 @@ const Shop = () => {
         // step 4 add the added product to the saved cart
             savedCart.push(addedProduct);
             }
-            console.log('added product', addedProduct)
+            // console.log('added product', addedProduct)
         }
         // step 5 set the cart
         setCart(savedCart);
@@ -46,7 +46,29 @@ const Shop = () => {
 
 
     const handleAddToCart =(product)=> {
+        
+       
+         
+
         const newCart =[...cart, product];
+
+        //option 3 from cart.jsx
+
+        // let newCart = [];
+        //if product doesn't exist in the cart, then set quantity =1
+        // if exist update quantity by 1
+        // const exists = cart.find(pd => pd.id===product.id);
+        // if(!exists){
+        //     product.quantity =1;
+        //     newCart = [...cart, product]
+        // }
+        // else{
+        //     exists.quantity = exists.quantity + 1 ;
+        //     const remaining = cart.filter(pd => pd.id !== product.id);
+        //     newCart= [...remaining, exists];
+        // }
+
+
         setCart(newCart);
         addToDb(product.id)
 
